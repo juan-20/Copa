@@ -3,6 +3,10 @@ import { useFonts, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@
 import { THEME } from './src/styles/theme'
 import Loading from './src/components/Loading';
 import Signin from './src/screens/Signin';
+import NewPool from './src/screens/New';
+import { AuthContextProvider } from './src/contexts/AuthContext';
+import FindPool from './src/screens/FindPool';
+import Pools from './src/screens/Pools';
 
 export default function App() {
 
@@ -10,15 +14,14 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={THEME}>
+      <AuthContextProvider>
       <StatusBar
       barStyle='light-content'
       backgroundColor='transparent'
       translucent
       />
-
-      {
-          fontsLoaded ? <Signin/> : <Loading/>
-      }
+      { fontsLoaded ? <Pools/> : <Loading/> }
+      </AuthContextProvider>
     </NativeBaseProvider>
   );
 }
